@@ -36,19 +36,16 @@ public class LatinKeyboardView extends KeyboardView {
         super(context, attrs, defStyle);
     }
 
-    public void changeKey(){
-    	Key key=this.getKeyboard().getKeys().get(1);
-    	key.icon = getResources().getDrawable(R.drawable.teclaesq);
-    	
+    public void invalidar(){
+    	this.invalidateAllKeys();
     }
     
     
     @Override
     protected boolean onLongPress(Key key) {
     
-    	//key.label = null;
-    	//key.icon = getResources().getDrawable(R.drawable.tecladir);
-    	
+    	//this.invalidateAllKeys();
+    	    	
         if (key.codes[0] == Keyboard.KEYCODE_CANCEL) {
             getOnKeyboardActionListener().onKey(KEYCODE_OPTIONS, null);
             return true;

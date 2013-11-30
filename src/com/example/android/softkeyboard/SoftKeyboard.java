@@ -613,8 +613,63 @@ public class SoftKeyboard extends InputMethodService
             updateShiftKeyState(getCurrentInputEditorInfo());
             updateCandidates();
         } else {
-            getCurrentInputConnection().commitText(
-                    String.valueOf((char) primaryCode), 1);            
+        	System.out.println(primaryCode);
+        	if(primaryCode==777){
+        		switch (count) {
+	                case 0:
+	                	getCurrentInputConnection().commitText("back", 1);
+	                    break;
+	                    
+	                case 1:
+	                	getCurrentInputConnection().commitText("i", 1);
+	                    break;
+	                    
+	                case 2:
+	                	getCurrentInputConnection().commitText("o", 1);
+	                    break;
+	                    
+	                case 3:
+	                	getCurrentInputConnection().commitText("n", 1);
+	                    break;
+	                    
+	                case 4:
+	                	getCurrentInputConnection().commitText("m", 1);
+	                    break;
+	                    
+	                default: 
+				}
+        	}
+        	else{
+        		if(primaryCode==776){
+        			switch (count) {
+	                    case 0:
+	                    	getCurrentInputConnection().commitText("frases", 1);
+	                        break;
+	                        
+	                    case 1:
+	                    	getCurrentInputConnection().commitText("a", 1);
+	                        break;
+	                        
+	                    case 2:
+	                    	getCurrentInputConnection().commitText("s", 1);
+	                        break;
+	                        
+	                    case 3:
+	                    	getCurrentInputConnection().commitText("e", 1);
+	                        break;
+	                        
+	                    case 4:
+	                    	getCurrentInputConnection().commitText("r", 1);
+	                        break;
+	                        
+	                    default: 
+        			}
+        		}
+        		else{
+	        		getCurrentInputConnection().commitText(
+	                    String.valueOf((char) primaryCode), 1);
+        		}
+        	}
         }
     }
 
@@ -689,8 +744,7 @@ public class SoftKeyboard extends InputMethodService
     
     //vamos utilizar eses dois muito provavelmente
     public void onPress(int primaryCode) {
-    	
-    	if(primaryCode==666 || primaryCode==777){
+
 	    	count=0;
 	        isPaused=false;
 	    	T=new Timer();
@@ -706,7 +760,6 @@ public class SoftKeyboard extends InputMethodService
 	            }
 	        }, 1000, 1000);  
 	        
-    	}
  
 
     }
@@ -714,7 +767,6 @@ public class SoftKeyboard extends InputMethodService
     public void onRelease(int primaryCode) {
     	
     	isPaused = true;
-    	System.out.println(count);
     	
     	mQwertyKeyboard.getKeys().get(5).label = null;
     	mQwertyKeyboard.getKeys().get(5).icon = getResources().getDrawable(R.drawable.tecladir);

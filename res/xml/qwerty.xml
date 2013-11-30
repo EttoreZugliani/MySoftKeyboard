@@ -61,7 +61,7 @@
         <Key android:codes="110" android:keyLabel="n"/>
         <Key android:codes="111" android:keyLabel="o"/>
         <Key android:codes="105" android:keyLabel="i"/>
-        <Key android:codes="-5" android:keyLabel="back" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
+        <Key android:codes="-5" android:keyLabel="back" android:keyWidth="15%p" android:keyEdgeFlags="right" android:isRepeatable="true"/>
         <!--
         <Key android:codes="97" android:keyLabel="a"
                 android:keyEdgeFlags="left"/>
@@ -129,7 +129,7 @@
 
    <Row android:keyHeight="20%p" android:horizontalGap="20px">
        
-        <Key android:codes="666" android:keyLabel="" android:keyWidth="50%p" android:keyEdgeFlags="left"  />
+        <Key android:codes="776" android:keyLabel="" android:keyWidth="50%p" android:keyEdgeFlags="left"  />
         
         <Key android:codes="777" android:keyLabel="" android:keyWidth="50%p" android:keyEdgeFlags="right"/>
     </Row>

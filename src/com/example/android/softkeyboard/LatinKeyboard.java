@@ -40,19 +40,6 @@ public class LatinKeyboard extends Keyboard {
 
     
     
-    public void changeKey(){
-    	Key key=this.getKeys().get(1);
- 
-    	key.icon = context.getResources().getDrawable(R.drawable.teclaesq);
-
-    	
-  
-    	
-    }
-    
-    
-    
-    
     @Override
     protected Key createKeyFromXml(Resources res, Row parent, int x, int y, 
             XmlResourceParser parser) {
