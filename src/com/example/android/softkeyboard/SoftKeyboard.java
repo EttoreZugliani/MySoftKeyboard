@@ -24,6 +24,7 @@ import java.util.TimerTask;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.os.Handler;
 import android.text.method.MetaKeyKeyListener;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -613,27 +614,36 @@ public class SoftKeyboard extends InputMethodService
             updateShiftKeyState(getCurrentInputEditorInfo());
             updateCandidates();
         } else {
-        	System.out.println(primaryCode);
         	if(primaryCode==777){
         		switch (count) {
 	                case 0:
 	                	getCurrentInputConnection().commitText("back", 1);
+	                	mQwertyKeyboard.getKeys().get(19).label = "back";
+	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
 	                case 1:
 	                	getCurrentInputConnection().commitText("i", 1);
+	                	mQwertyKeyboard.getKeys().get(18).label = "i";
+	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
 	                case 2:
 	                	getCurrentInputConnection().commitText("o", 1);
+	                	mQwertyKeyboard.getKeys().get(17).label = "o";
+	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
 	                case 3:
 	                	getCurrentInputConnection().commitText("n", 1);
+	                	mQwertyKeyboard.getKeys().get(16).label = "n";
+	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
 	                case 4:
 	                	getCurrentInputConnection().commitText("m", 1);
+	                	mQwertyKeyboard.getKeys().get(15).label = "m";
+	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
 	                default: 
@@ -644,22 +654,32 @@ public class SoftKeyboard extends InputMethodService
         			switch (count) {
 	                    case 0:
 	                    	getCurrentInputConnection().commitText("frases", 1);
+	                    	mQwertyKeyboard.getKeys().get(10).label = "frases";
+		                	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    case 1:
 	                    	getCurrentInputConnection().commitText("a", 1);
+	                    	mQwertyKeyboard.getKeys().get(11).label = "a";
+		                	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    case 2:
 	                    	getCurrentInputConnection().commitText("s", 1);
+	                    	mQwertyKeyboard.getKeys().get(12).label = "s";
+		                	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    case 3:
 	                    	getCurrentInputConnection().commitText("e", 1);
+	                    	mQwertyKeyboard.getKeys().get(13).label = "e";
+		                	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    case 4:
 	                    	getCurrentInputConnection().commitText("r", 1);
+	                    	mQwertyKeyboard.getKeys().get(14).label = "r";
+		                	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    default: 
@@ -742,35 +762,124 @@ public class SoftKeyboard extends InputMethodService
     Timer T;
     
     
-    //vamos utilizar eses dois muito provavelmente
     public void onPress(int primaryCode) {
 
 	    	count=0;
 	        isPaused=false;
-	    	T=new Timer();
-	        T.scheduleAtFixedRate(new TimerTask() {         
-	            @Override
-	            public void run() {
-	            	if(!isPaused)
-	                {
-	                    count = (count+1)%5;                
-	                } else {
-	                    cancel();//adding this makes it actually stop
-	                }              
-	            }
-	        }, 1000, 1000);  
-	        
- 
-
+	    	T=new Timer();	    	
+	    	if(primaryCode==777){
+		        T.scheduleAtFixedRate(new TimerTask() {         
+		            @Override
+		            public void run() {
+		            	if(!isPaused)
+		                {
+		                    count = (count+1)%5;
+		                    switch (count) {
+		                    case 0:	
+		                    	mQwertyKeyboard.getKeys().get(15).label = "m";
+		                    	mQwertyKeyboard.getKeys().get(19).label = null;
+			                    mHandler.postDelayed(mUpdateTimeTask, 100);
+		                        break;
+		                        
+		                    case 1:
+		                    	mQwertyKeyboard.getKeys().get(19).label = "back";
+		                    	mQwertyKeyboard.getKeys().get(18).label = null;
+			                    mHandler.postDelayed(mUpdateTimeTask, 100);
+		                        break;
+		                        
+		                    case 2:
+		                    	mQwertyKeyboard.getKeys().get(18).label = "i";
+		                    	mQwertyKeyboard.getKeys().get(17).label = null;
+			                    mHandler.postDelayed(mUpdateTimeTask, 100);
+		                        break;
+		                        
+		                    case 3:
+		                    	mQwertyKeyboard.getKeys().get(17).label = "o";
+		                    	mQwertyKeyboard.getKeys().get(16).label = null;
+			                    mHandler.postDelayed(mUpdateTimeTask, 100);
+		                        break;
+		                        
+		                    case 4:
+		                    	mQwertyKeyboard.getKeys().get(16).label = "n";
+		                    	mQwertyKeyboard.getKeys().get(15).label = null;
+			                    mHandler.postDelayed(mUpdateTimeTask, 100);
+		                        break;
+		                        
+		                    default: 
+	        			}
+		                } else {
+		                    cancel();//adding this makes it actually stop
+		                }              
+		            }
+		        }, 1000, 1000);
+	    	}
+	    	else{
+	    		if(primaryCode==776){
+			        T.scheduleAtFixedRate(new TimerTask() {         
+			            @Override
+			            public void run() {
+			            	if(!isPaused)
+			                {
+			                    count = (count+1)%5;
+			                    switch (count) {
+			                    case 0:	
+			                    	mQwertyKeyboard.getKeys().get(14).label = "r";
+			                    	mQwertyKeyboard.getKeys().get(10).label = null;
+				                    mHandler.postDelayed(mUpdateTimeTask, 100);
+			                        break;
+			                        
+			                    case 1:
+			                    	mQwertyKeyboard.getKeys().get(10).label = "frases";
+			                    	mQwertyKeyboard.getKeys().get(11).label = null;
+				                    mHandler.postDelayed(mUpdateTimeTask, 100);
+			                        break;
+			                        
+			                    case 2:
+			                    	mQwertyKeyboard.getKeys().get(11).label = "a";
+			                    	mQwertyKeyboard.getKeys().get(12).label = null;
+				                    mHandler.postDelayed(mUpdateTimeTask, 100);
+			                        break;
+			                        
+			                    case 3:
+			                    	mQwertyKeyboard.getKeys().get(12).label = "s";
+			                    	mQwertyKeyboard.getKeys().get(13).label = null;
+				                    mHandler.postDelayed(mUpdateTimeTask, 100);
+			                        break;
+			                        
+			                    case 4:
+			                    	mQwertyKeyboard.getKeys().get(13).label = "e";
+			                    	mQwertyKeyboard.getKeys().get(14).label = null;
+				                    mHandler.postDelayed(mUpdateTimeTask, 100);
+			                        break;
+			                        
+			                    default: 
+		        			}
+			                } else {
+			                    cancel();//adding this makes it actually stop
+			                }              
+			            }
+			        }, 1000, 1000);
+		    	}
+	    	}
     }
+    
+    private Handler mHandler = new Handler();
+    
+    private Runnable mUpdateTimeTask = new Runnable(){
+    	 public void run(){
+    		 mInputView.invalidateAllKeys();
+    	 }
+    };
     
     public void onRelease(int primaryCode) {
     	
     	isPaused = true;
     	
-    	mQwertyKeyboard.getKeys().get(5).label = null;
-    	mQwertyKeyboard.getKeys().get(5).icon = getResources().getDrawable(R.drawable.tecladir);
-    	
-    	
+//    	mQwertyKeyboard.getKeys().get(5).label = null;
+//    	mQwertyKeyboard.getKeys().get(5).icon = getResources().getDrawable(R.drawable.tecladir);
+//    	mInputView.invalidateAllKeys();
+//    	mQwertyKeyboard.getKeys().get(5).icon = null;
+//    	mInputView.invalidateAllKeys();
+   	
     }
 }

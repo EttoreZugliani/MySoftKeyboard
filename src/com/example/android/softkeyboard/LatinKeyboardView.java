@@ -16,7 +16,12 @@
 
 package com.example.android.softkeyboard;
 
+import java.util.List;
+
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.Keyboard.Key;
 import android.inputmethodservice.KeyboardView;
@@ -24,33 +29,41 @@ import android.util.AttributeSet;
 
 public class LatinKeyboardView extends KeyboardView {
 
-    static final int KEYCODE_OPTIONS = -100;
+	static final int KEYCODE_OPTIONS = -100;
 
-    public LatinKeyboardView(Context context, AttributeSet attrs) {
+	public LatinKeyboardView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        
-        
     }
 
-    public LatinKeyboardView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-    }
+	public LatinKeyboardView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+	}
 
-    public void invalidar(){
-    	this.invalidateAllKeys();
-    }
-    
-    
-    @Override
-    protected boolean onLongPress(Key key) {
-    
-    	//this.invalidateAllKeys();
-    	    	
-        if (key.codes[0] == Keyboard.KEYCODE_CANCEL) {
-            getOnKeyboardActionListener().onKey(KEYCODE_OPTIONS, null);
-            return true;
-        } else {
-            return super.onLongPress(key);
-        }
-    }
+	@Override
+	protected boolean onLongPress(Key key) {
+
+		if (key.codes[0] == Keyboard.KEYCODE_CANCEL) {
+			getOnKeyboardActionListener().onKey(KEYCODE_OPTIONS, null);
+			return true;
+		} else {
+			return super.onLongPress(key);
+		}
+	}
+
+//	@Override
+//	public void onDraw(Canvas canvas) {
+//		super.onDraw(canvas);
+//
+//		Paint paint = new Paint();
+//		paint.setTextAlign(Paint.Align.CENTER);
+//		paint.setTextSize(25);
+//		paint.setColor(Color.RED);
+//
+//		List<Key> keys = getKeyboard().getKeys();
+//		for (Key key : keys) {
+//			if (key.label != null)
+//				canvas.drawText(key.label.toString(), key.x + (key.width / 2),
+//						key.y + 25, paint);
+//		}
+//	}
 }

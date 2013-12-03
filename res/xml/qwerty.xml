@@ -23,11 +23,13 @@
     android:horizontalGap="0px"
     android:verticalGap="0px"
     android:keyHeight="80px"
+    android:keyBackground="@drawable/btn_keyboard_key_ics"
     >
     
 
     <Row>
-        <Key android:codes="1" android:keyLabel="simb" android:keyWidth="15%p" android:keyEdgeFlags="left"/>
+        <Key android:codes="1" android:keyLabel="simb" 
+             android:keyWidth="15%p" android:keyEdgeFlags="left"/>
         <Key android:codes="113" android:keyLabel="q" />
         <Key android:codes="100" android:keyLabel="d"/>
         <Key android:codes="102" android:keyLabel="f"/>
