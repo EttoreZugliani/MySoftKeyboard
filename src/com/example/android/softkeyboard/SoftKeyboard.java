@@ -618,31 +618,51 @@ public class SoftKeyboard extends InputMethodService
         		switch (count) {
 	                case 0:
 	                	getCurrentInputConnection().commitText("back", 1);
-	                	mQwertyKeyboard.getKeys().get(19).label = "back";
+
+	                	mQwertyKeyboard.getKeys().get(9).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(19).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(29).pressed = false;
+	                	
 	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
 	                case 1:
 	                	getCurrentInputConnection().commitText("i", 1);
-	                	mQwertyKeyboard.getKeys().get(18).label = "i";
+
+	                	mQwertyKeyboard.getKeys().get(8).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(18).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(28).pressed = false;
+	                	
 	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
 	                case 2:
 	                	getCurrentInputConnection().commitText("o", 1);
-	                	mQwertyKeyboard.getKeys().get(17).label = "o";
+
+	                	mQwertyKeyboard.getKeys().get(7).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(17).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(27).pressed = false;
+	                	
 	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
 	                case 3:
 	                	getCurrentInputConnection().commitText("n", 1);
-	                	mQwertyKeyboard.getKeys().get(16).label = "n";
+
+	                	mQwertyKeyboard.getKeys().get(6).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(16).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(26).pressed = false;
+	                	
 	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
 	                case 4:
 	                	getCurrentInputConnection().commitText("m", 1);
-	                	mQwertyKeyboard.getKeys().get(15).label = "m";
+	                	
+	                	mQwertyKeyboard.getKeys().get(5).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(15).pressed = false;
+                    	mQwertyKeyboard.getKeys().get(25).pressed = false;
+	                	
 	                	mInputView.invalidateAllKeys();
 	                    break;
 	                    
@@ -654,32 +674,52 @@ public class SoftKeyboard extends InputMethodService
         			switch (count) {
 	                    case 0:
 	                    	getCurrentInputConnection().commitText("frases", 1);
-	                    	mQwertyKeyboard.getKeys().get(10).label = "frases";
+	                    	
+	                    	mQwertyKeyboard.getKeys().get(0).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(10).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(20).pressed = false;
+	                    	
 		                	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    case 1:
 	                    	getCurrentInputConnection().commitText("a", 1);
-	                    	mQwertyKeyboard.getKeys().get(11).label = "a";
-		                	mInputView.invalidateAllKeys();
+	                    	
+	                    	mQwertyKeyboard.getKeys().get(1).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(11).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(21).pressed = false;
+	                    	
+	                    	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    case 2:
 	                    	getCurrentInputConnection().commitText("s", 1);
-	                    	mQwertyKeyboard.getKeys().get(12).label = "s";
-		                	mInputView.invalidateAllKeys();
+	                    	
+	                    	mQwertyKeyboard.getKeys().get(2).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(12).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(22).pressed = false;
+	                    	
+	                    	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    case 3:
 	                    	getCurrentInputConnection().commitText("e", 1);
-	                    	mQwertyKeyboard.getKeys().get(13).label = "e";
-		                	mInputView.invalidateAllKeys();
+	                    	
+	                    	mQwertyKeyboard.getKeys().get(3).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(13).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(23).pressed = false;
+	                    	
+	                    	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    case 4:
 	                    	getCurrentInputConnection().commitText("r", 1);
-	                    	mQwertyKeyboard.getKeys().get(14).label = "r";
-		                	mInputView.invalidateAllKeys();
+	                    	
+	                    	mQwertyKeyboard.getKeys().get(14).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(14).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(14).pressed = false;
+	                    	
+	                    	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    default: 
@@ -775,33 +815,68 @@ public class SoftKeyboard extends InputMethodService
 		                {
 		                    count = (count+1)%5;
 		                    switch (count) {
-		                    case 0:	
-		                    	mQwertyKeyboard.getKeys().get(15).label = "m";
-		                    	mQwertyKeyboard.getKeys().get(19).label = null;
+		                    case 0:
+		                    	mQwertyKeyboard.getKeys().get(9).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(5).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(19).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(15).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(29).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(25).pressed = false;        	
+		                    	
 			                    mHandler.postDelayed(mUpdateTimeTask, 100);
 		                        break;
 		                        
 		                    case 1:
-		                    	mQwertyKeyboard.getKeys().get(19).label = "back";
-		                    	mQwertyKeyboard.getKeys().get(18).label = null;
+		                    	mQwertyKeyboard.getKeys().get(8).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(9).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(18).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(19).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(28).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(29).pressed = false;
+		               
 			                    mHandler.postDelayed(mUpdateTimeTask, 100);
 		                        break;
 		                        
 		                    case 2:
-		                    	mQwertyKeyboard.getKeys().get(18).label = "i";
-		                    	mQwertyKeyboard.getKeys().get(17).label = null;
+		                    	mQwertyKeyboard.getKeys().get(7).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(8).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(17).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(18).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(27).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(28).pressed = false;
+		                    	
 			                    mHandler.postDelayed(mUpdateTimeTask, 100);
 		                        break;
 		                        
-		                    case 3:
-		                    	mQwertyKeyboard.getKeys().get(17).label = "o";
-		                    	mQwertyKeyboard.getKeys().get(16).label = null;
+		                    case 3:		                    	
+		                    	mQwertyKeyboard.getKeys().get(6).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(7).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(16).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(17).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(26).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(27).pressed = false;
+		                    	
 			                    mHandler.postDelayed(mUpdateTimeTask, 100);
 		                        break;
 		                        
-		                    case 4:
-		                    	mQwertyKeyboard.getKeys().get(16).label = "n";
-		                    	mQwertyKeyboard.getKeys().get(15).label = null;
+		                    case 4:		                    	
+		                    	mQwertyKeyboard.getKeys().get(5).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(6).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(15).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(16).pressed = false;
+		                    	
+		                    	mQwertyKeyboard.getKeys().get(25).pressed = true;
+		                    	mQwertyKeyboard.getKeys().get(26).pressed = false;
+		               
 			                    mHandler.postDelayed(mUpdateTimeTask, 100);
 		                        break;
 		                        
@@ -823,32 +898,67 @@ public class SoftKeyboard extends InputMethodService
 			                    count = (count+1)%5;
 			                    switch (count) {
 			                    case 0:	
-			                    	mQwertyKeyboard.getKeys().get(14).label = "r";
-			                    	mQwertyKeyboard.getKeys().get(10).label = null;
+			                    	mQwertyKeyboard.getKeys().get(4).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(0).pressed = true;
+			                    	
+			                    	mQwertyKeyboard.getKeys().get(14).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(10).pressed = true;
+			                    	
+			                    	mQwertyKeyboard.getKeys().get(24).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(20).pressed = true;
+			                    	
 				                    mHandler.postDelayed(mUpdateTimeTask, 100);
 			                        break;
 			                        
 			                    case 1:
-			                    	mQwertyKeyboard.getKeys().get(10).label = "frases";
-			                    	mQwertyKeyboard.getKeys().get(11).label = null;
-				                    mHandler.postDelayed(mUpdateTimeTask, 100);
+			                    	mQwertyKeyboard.getKeys().get(0).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(1).pressed = true;
+			                    	
+			                    	mQwertyKeyboard.getKeys().get(10).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(11).pressed = true;
+				                    
+			                    	mQwertyKeyboard.getKeys().get(20).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(21).pressed = true;
+			                    	
+			                    	mHandler.postDelayed(mUpdateTimeTask, 100);
 			                        break;
 			                        
 			                    case 2:
-			                    	mQwertyKeyboard.getKeys().get(11).label = "a";
-			                    	mQwertyKeyboard.getKeys().get(12).label = null;
+			                    	mQwertyKeyboard.getKeys().get(1).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(2).pressed = true;
+			                    	
+			                    	mQwertyKeyboard.getKeys().get(11).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(12).pressed = true;
+			                    	
+			                    	mQwertyKeyboard.getKeys().get(21).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(22).pressed = true;
+			                    	
 				                    mHandler.postDelayed(mUpdateTimeTask, 100);
 			                        break;
 			                        
 			                    case 3:
-			                    	mQwertyKeyboard.getKeys().get(12).label = "s";
-			                    	mQwertyKeyboard.getKeys().get(13).label = null;
+			                    	mQwertyKeyboard.getKeys().get(2).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(3).pressed = true;
+			                    	
+			                    	mQwertyKeyboard.getKeys().get(12).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(13).pressed = true;
+			                    	
+			                    	mQwertyKeyboard.getKeys().get(22).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(23).pressed = true;
+			                    	
 				                    mHandler.postDelayed(mUpdateTimeTask, 100);
 			                        break;
 			                        
 			                    case 4:
-			                    	mQwertyKeyboard.getKeys().get(13).label = "e";
-			                    	mQwertyKeyboard.getKeys().get(14).label = null;
+			                    	mQwertyKeyboard.getKeys().get(3).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(4).pressed = true;
+			                    	
+			                    	mQwertyKeyboard.getKeys().get(13).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(14).pressed = true;
+			                    	
+			                    	mQwertyKeyboard.getKeys().get(23).pressed = false;
+			                    	mQwertyKeyboard.getKeys().get(24).pressed = true;
+			                    	
 				                    mHandler.postDelayed(mUpdateTimeTask, 100);
 			                        break;
 			                        
