@@ -627,7 +627,7 @@ public class SoftKeyboard extends InputMethodService
 	                    break;
 	                    
 	                case 1:
-	                	getCurrentInputConnection().commitText("i", 1);
+	                	getCurrentInputConnection().setComposingText("i", 1);
 
 	                	mQwertyKeyboard.getKeys().get(8).pressed = false;
                     	mQwertyKeyboard.getKeys().get(18).pressed = false;
@@ -668,6 +668,8 @@ public class SoftKeyboard extends InputMethodService
 	                    
 	                default: 
 				}
+        		updateShiftKeyState(getCurrentInputEditorInfo());
+        		updateCandidates();
         	}
         	else{
         		if(primaryCode==776){
@@ -715,15 +717,16 @@ public class SoftKeyboard extends InputMethodService
 	                    case 4:
 	                    	getCurrentInputConnection().commitText("r", 1);
 	                    	
+	                    	mQwertyKeyboard.getKeys().get(4).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(14).pressed = false;
-	                    	mQwertyKeyboard.getKeys().get(14).pressed = false;
-	                    	mQwertyKeyboard.getKeys().get(14).pressed = false;
+	                    	mQwertyKeyboard.getKeys().get(24).pressed = false;
 	                    	
 	                    	mInputView.invalidateAllKeys();
 	                        break;
 	                        
 	                    default: 
         			}
+        			updateCandidates();
         		}
         		else{
 	        		getCurrentInputConnection().commitText(
