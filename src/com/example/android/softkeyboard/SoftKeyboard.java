@@ -608,12 +608,7 @@ public class SoftKeyboard extends InputMethodService
                 primaryCode = Character.toUpperCase(primaryCode);
             }
         }
-        if (isAlphabet(primaryCode) && mPredictionOn) {
-            mComposing.append((char) primaryCode);
-            getCurrentInputConnection().setComposingText(mComposing, 1);
-            updateShiftKeyState(getCurrentInputEditorInfo());
-            updateCandidates();
-        } else {
+        if ((isAlphabet(primaryCode)||primaryCode==777||primaryCode==776) && mPredictionOn) {
         	if(primaryCode==777){
         		switch (count) {
 	                case 0:
@@ -668,8 +663,6 @@ public class SoftKeyboard extends InputMethodService
 	                    
 	                default: 
 				}
-        		updateShiftKeyState(getCurrentInputEditorInfo());
-        		updateCandidates();
         	}
         	else{
         		if(primaryCode==776){
@@ -729,11 +722,19 @@ public class SoftKeyboard extends InputMethodService
         			updateCandidates();
         		}
         		else{
+		            mComposing.append((char) primaryCode);
+		            getCurrentInputConnection().setComposingText(mComposing, 1);
+        		}
+        	}
+            updateShiftKeyState(getCurrentInputEditorInfo());
+            updateCandidates();        	
+        }
+        		else{
 	        		getCurrentInputConnection().commitText(
 	                    String.valueOf((char) primaryCode), 1);
         		}
-        	}
-        }
+        	
+        
     }
 
     private void handleClose() {
