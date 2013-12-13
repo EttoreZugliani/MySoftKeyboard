@@ -33,6 +33,8 @@ import android.view.inputmethod.CompletionInfo;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
+import grep.Grep;
+
 /**
  * Example of writing an input method for a soft keyboard.  This code is
  * focused on simplicity over completeness, so it should in no way be considered
@@ -542,10 +544,14 @@ public class SoftKeyboard extends InputMethodService
      * candidates.
      */
     private void updateCandidates() {
+    	Grep grep = new Grep();
         if (!mCompletionOn) {
             if (mComposing.length() > 0) {
                 ArrayList<String> list = new ArrayList<String>();
                 list.add(mComposing.toString());
+                //tratamentos de predicao aqui
+                //grep.main("a" brazilian   );
+                //getResources().getAssets();
                 setSuggestions(list, true, true);
             } else {
                 setSuggestions(null, false, false);
@@ -612,109 +618,110 @@ public class SoftKeyboard extends InputMethodService
         	if(primaryCode==777){
         		switch (count) {
 	                case 0:
-	                	getCurrentInputConnection().commitText("back", 1);
-
 	                	mQwertyKeyboard.getKeys().get(9).pressed = false;
                     	mQwertyKeyboard.getKeys().get(19).pressed = false;
                     	mQwertyKeyboard.getKeys().get(29).pressed = false;
 	                	
 	                	mInputView.invalidateAllKeys();
+	                	mComposing.append("back");
+			            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                    break;
 	                    
 	                case 1:
-	                	getCurrentInputConnection().setComposingText("i", 1);
-
 	                	mQwertyKeyboard.getKeys().get(8).pressed = false;
                     	mQwertyKeyboard.getKeys().get(18).pressed = false;
                     	mQwertyKeyboard.getKeys().get(28).pressed = false;
 	                	
 	                	mInputView.invalidateAllKeys();
+	                	mComposing.append("i");
+			            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                    break;
 	                    
 	                case 2:
-	                	getCurrentInputConnection().commitText("o", 1);
-
 	                	mQwertyKeyboard.getKeys().get(7).pressed = false;
                     	mQwertyKeyboard.getKeys().get(17).pressed = false;
                     	mQwertyKeyboard.getKeys().get(27).pressed = false;
 	                	
 	                	mInputView.invalidateAllKeys();
+	                	mComposing.append("o");
+			            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                    break;
 	                    
 	                case 3:
-	                	getCurrentInputConnection().commitText("n", 1);
-
 	                	mQwertyKeyboard.getKeys().get(6).pressed = false;
                     	mQwertyKeyboard.getKeys().get(16).pressed = false;
                     	mQwertyKeyboard.getKeys().get(26).pressed = false;
 	                	
 	                	mInputView.invalidateAllKeys();
+	                	mComposing.append("n");
+			            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                    break;
 	                    
 	                case 4:
-	                	getCurrentInputConnection().commitText("m", 1);
-	                	
 	                	mQwertyKeyboard.getKeys().get(5).pressed = false;
                     	mQwertyKeyboard.getKeys().get(15).pressed = false;
                     	mQwertyKeyboard.getKeys().get(25).pressed = false;
 	                	
 	                	mInputView.invalidateAllKeys();
+	                	mComposing.append("m");
+			            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                    break;
 	                    
 	                default: 
 				}
+        		updateCandidates();
         	}
         	else{
         		if(primaryCode==776){
         			switch (count) {
 	                    case 0:
-	                    	getCurrentInputConnection().commitText("frases", 1);
-	                    	
 	                    	mQwertyKeyboard.getKeys().get(0).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(10).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(20).pressed = false;
 	                    	
 		                	mInputView.invalidateAllKeys();
+		                	mComposing.append("frases");
+				            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                        break;
 	                        
 	                    case 1:
-	                    	getCurrentInputConnection().commitText("a", 1);
-	                    	
 	                    	mQwertyKeyboard.getKeys().get(1).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(11).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(21).pressed = false;
 	                    	
 	                    	mInputView.invalidateAllKeys();
+	                    	mComposing.append("a");
+				            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                        break;
 	                        
 	                    case 2:
-	                    	getCurrentInputConnection().commitText("s", 1);
-	                    	
 	                    	mQwertyKeyboard.getKeys().get(2).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(12).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(22).pressed = false;
 	                    	
 	                    	mInputView.invalidateAllKeys();
+	                    	mComposing.append("s");
+				            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                        break;
 	                        
 	                    case 3:
-	                    	getCurrentInputConnection().commitText("e", 1);
-	                    	
 	                    	mQwertyKeyboard.getKeys().get(3).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(13).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(23).pressed = false;
 	                    	
 	                    	mInputView.invalidateAllKeys();
+	                    	mComposing.append("e");
+				            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                        break;
 	                        
 	                    case 4:
-	                    	getCurrentInputConnection().commitText("r", 1);
-	                    	
 	                    	mQwertyKeyboard.getKeys().get(4).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(14).pressed = false;
 	                    	mQwertyKeyboard.getKeys().get(24).pressed = false;
 	                    	
 	                    	mInputView.invalidateAllKeys();
+	                    	mComposing.append("r");
+				            getCurrentInputConnection().setComposingText(mComposing, 1);
 	                        break;
 	                        
 	                    default: 
